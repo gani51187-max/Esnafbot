@@ -44,10 +44,12 @@ async function startBot() {
     sock.ev.on('connection.update', (update) => {
         const { connection, lastDisconnect, qr } = update;
 
-        if (qr) {
-            console.log('QR KODU GELDİ! WhatsApp\'tan taratın:');
-            qrcode.generate(qr, { small: true });
-        }
+       if (qr) {
+    console.log('=== QR KODU ===');
+    console.log(qr);
+    console.log('===============');
+    qrcode.generate(qr, { small: true });
+}
 
         if (connection === 'close') {
             const shouldReconnect = lastDisconnect?.error?.output?.statusCode !== DisconnectReason.loggedOut;
