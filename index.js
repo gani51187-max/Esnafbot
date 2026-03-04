@@ -1,4 +1,4 @@
-const { default: makeWASocket, useMultiFileAuthState, DisconnectReason, fetchLatestBaileysVersion } = require('@whiskeysockets/baileys');
+const { default: makeWASocket, useMultiFileAuthState, DisconnectReason } = require('@whiskeysockets/baileys');
 const qrcode = require('qrcode-terminal');
 const { GoogleGenerativeAI } = require("@google/generative-ai");
 const pino = require('pino');
@@ -9,7 +9,7 @@ const model = genAI.getGenerativeModel({ model: "gemini-1.5-flash" });
 
 async function startBot() {
     const { state, saveCreds } = await useMultiFileAuthState('auth_info');
-    const { version } = await fetchLatestBaileysVersion();
+    const version = [2, 3000, 1015901307];
 
     const sock = makeWASocket({
         version,
